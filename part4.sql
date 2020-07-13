@@ -3,9 +3,9 @@
 --* The first column should be `Product Line` and the second should be 
 --`# Sold`.* Order by the second column descending.
 
-SELECT p.productline 'Product Line', SUM(od.quantityOrdered) '# Sold'
+SELECT p.productline 'Product Line', COUNT(od.quantityOrdered) '# Sold'
 FROM products p INNER JOIN orderdetails od
 ON p.productCode=od.productCode
 GROUP BY productLine
-ORDER BY sum(od.quantityOrdered) DESC;
+ORDER BY COUNT(od.quantityOrdered) DESC;
  
