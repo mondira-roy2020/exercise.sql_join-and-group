@@ -33,7 +33,16 @@ GROUP BY customerName; --Gives the most popular product for each customer
 --sale generated (total quantity ordered * priceEach) for that product.
 
 SELECT p.productName 'Product Name', sum(od.quantityOrdered) 'Total # Ordered',
- sum()
+ sum(quantityOrdered*priceEach)'Total Sale' 
+ FROM products p JOIN orderdetails od
+ ON p.productCode=od.productCode
+ GROUP BY productName; 
 
 --* The column headers should be `Product Name`, `Total # Ordered` and
 --`Total Sale`. List the products by `Total Sale` descending.
+SELECT p.productName 'Product Name', sum(od.quantityOrdered) 'Total # Ordered',
+ sum(quantityOrdered*priceEach)'Total Sale' 
+ FROM products p JOIN orderdetails od
+ ON p.productCode=od.productCode
+ GROUP BY productName
+ ORDER BY 'Total Sale' DESC;
